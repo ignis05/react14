@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Level Editor</title>
+
+    <link rel="shortcut icon" href="/static/img/hexagon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <script src="/libs/jquery-3.3.1.js"></script>
+    <script src="/static/js/Net.js"></script>
+    <script src="/static/js/Hex.js"></script>
+    <script src="/static/js/main.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div id="controls">
+            <select id="select">
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <button id="btCreate">Create</button>
+            <button id="btSave">Save</button>
+            <button id="btLoad">Load</button>
+
+            <button id="btRender">Render map</button>
+
+            <details>
+                <summary class="button">TEST</summary>
+                <button id="btTestMove" class="button ">TestMove</button>
+                <button id="btTestAlly" class="button ">TestAlly</button>
+                <button id="btTestCol" class="button ">TestCol</button>
+            </details>
+            
+            
+            <button id="btWalls" class="hexButton">Walls</button>
+            <button id="btEnemy" class="hexButton">Enemy</button>
+            <button id="btTreasure" class="hexButton">Treasure</button>
+            <button id="btLight" class="hexButton">Light</button>
+            <button id="btAlly" class="hexButton">Ally</button>
+        </div>
+        <div id="display"></div>
+        <div id="map"></div>
+    </div>
+</body>
+</html>

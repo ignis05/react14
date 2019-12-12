@@ -1,0 +1,223 @@
+* {
+    box-sizing: border-box;
+    user-select: none;
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    width: auto;
+    height: auto;
+    position: relative;
+    display: block;
+}
+
+#root>* {
+    float: left;
+}
+
+#controls {
+    height: 100vh;
+    width: 180px;
+    background: gray;
+    padding: 10px;
+}
+
+#map {
+    display: block;
+    background: cyan;
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+    margin-left: 380px;
+    position: absolute;
+    top: 0px;
+}
+
+#map>*:last-child {
+    margin-bottom: 30px;
+}
+
+#display {
+    width: 200px;
+    height: 100vh;
+    background: #aaaaaa;
+    white-space: pre;
+    overflow: auto;
+}
+
+.hexagon {
+    width: 57.14px;
+    height: 100px;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    cursor: pointer;
+    background: grey;
+}
+
+.hexagon .corner-1, .hexagon .corner-2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    overflow: hidden;
+    backface-visibility: hidden;
+}
+
+.hexagon .corner-1 {
+    transform: rotate(60deg);
+    /* background: red; */
+}
+
+.hexagon .corner-2 {
+    transform: rotate(-60deg);
+    /* background: blue; */
+}
+
+.arrow {
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 2px;
+    left: 13.57px;
+    transform: rotate(90deg)
+}
+
+.displayDiv {
+    z-index: 20;
+    position: absolute;
+    left: 22.32px;
+    top: 36px;
+    font-size: 25px;
+    font-weight: bold;
+    width: 12.5px;
+    height: 28px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+select {
+    padding: 5px;
+    width: 60px;
+    font-size: 24px;
+}
+
+button {
+    cursor: pointer;
+}
+
+#btCreate {
+    padding: 5px;
+    height: 41px;
+    width: 85px;
+    -webkit-text-stroke: 1px black;
+    font-size: 24px;
+    color: grey;
+}
+
+#btSave {
+    margin-top: 30px;
+    padding: 10px;
+    width: 150px;
+    display: block;
+    width: 150px;
+    -webkit-text-stroke: 1px black;
+    letter-spacing: 5px;
+    font-size: 24px;
+    color: rgb(33, 218, 33);
+}
+
+#btLoad {
+    margin-top: 10px;
+    padding: 10px;
+    width: 150px;
+    margin-bottom: 30px;
+    display: block;
+    width: 150px;
+    -webkit-text-stroke: 1px black;
+    letter-spacing: 5px;
+    font-size: 24px;
+    color: violet;
+}
+
+.hexButton {
+    padding: 5px;
+    margin-top: 10px;
+    display: block;
+    width: 150px;
+    -webkit-text-stroke: 1px black;
+    letter-spacing: 5px;
+    font-size: 24px;
+}
+
+.hexButton:hover {
+    outline: 3px solid rgba(0, 255, 255, 0.329);
+}
+
+.btActive {
+    outline: 3px solid cyan;
+}
+
+.btActive:hover {
+    outline: 3px solid cyan;
+}
+
+#btWalls {
+    margin-top: 30px;
+    color: black;
+}
+
+#btEnemy {
+    color: red;
+}
+
+#btTreasure {
+    color: blue;
+}
+
+#btLight {
+    color: yellow;
+}
+
+#btAlly {
+    color: green;
+}
+
+#btRender{
+    margin-top: 10px;
+    padding: 10px;
+    width: 150px;
+    margin-bottom: 30px;
+    display: block;
+    width: 150px;
+    -webkit-text-stroke: 1px black;
+    letter-spacing: 5px;
+    font-size: 24px;
+    color:cyan;
+}
+
+.lightsControler{
+    width: 200px;
+}
+
+.button {
+    margin-top: 10px;
+    padding: 10px;
+    width: 150px;
+    margin-bottom: 10px;
+    display: block;
+    width: 150px;
+    -webkit-text-stroke: 1px black;
+    letter-spacing: 3px;
+    font-size: 24px;
+    color:pink;
+    background: #dddddd;
+    text-align: center;
+}
+
+details summary::-webkit-details-marker {
+    display:none;
+  }

@@ -17,6 +17,7 @@ class MainScreen extends Component {
 		this.switchWS = this.switchWS.bind(this)
 		this.switchAcc = this.switchAcc.bind(this)
 		this.accHandler = this.accHandler.bind(this)
+		this.socket
 	}
 
 	async componentDidMount() {
@@ -27,12 +28,13 @@ class MainScreen extends Component {
 	switchWS() {
 		console.log('switching websocket')
 		if (this.state.ws) {
-			this.state.ws.close()
+			this.socket.close()
 			this.setState({ ws: false })
 		} else {
-			this.setState({ ws: new WebSocket(socketDest) }, () => {
-				this.state.ws.onerror = e => console.log(e.message)
-				this.state.ws.onclose = e => console.log(e.code, e.reason)
+			this.setState({ ws: true }, () => {
+				this.socket = new WebSocket(socketDest)
+				this.socket.onerror = e => console.log(e.message)
+				this.socket.onclose = e => console.log(e.code, e.reason)
 			})
 		}
 	}
@@ -49,7 +51,7 @@ class MainScreen extends Component {
 
 	accHandler(data) {
 		this.setState({ data: data })
-		if (this.state.ws) this.state.ws.send(JSON.stringify(data))
+		if (this.state.ws) this.socket.send(JSON.stringify(data))
 	}
 
 	render() {
