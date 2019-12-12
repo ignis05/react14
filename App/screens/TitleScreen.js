@@ -38,7 +38,7 @@ class TitleScreen extends Component {
 		return (
 			<View style={styles.wrapper}>
 				<View style={styles.header}>
-					<Text style={[styles.headerText, this.state.fontLoaded ? { fontFamily: 'customFont' } : {}]}>Temp App</Text>
+					<Text style={[styles.headerText, this.state.fontLoaded ? { fontFamily: 'customFont' } : {}]}>Accelerometer App</Text>
 					<Text>firebase authentication</Text>
 					<Text>firebase database</Text>
 				</View>

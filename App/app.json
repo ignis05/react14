@@ -1,6 +1,6 @@
 {
 	"expo": {
-		"name": "Temp",
+		"name": "Accelerometer",
 		"slug": "react14",
 		"privacy": "unlisted",
 		"sdkVersion": "35.0.0",
