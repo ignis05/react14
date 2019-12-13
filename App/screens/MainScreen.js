@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import { Accelerometer } from 'expo-sensors'
 import SwitchButton from '../components/SwitchButton'
 
-const socketDest = 'ws://192.168.1.12:1337'
+const socketDest = 'ws://192.168.43.194:1337'
 
 const styles = StyleSheet.create({
 	wrapper: { flex: 1, justifyContent: 'flex-start', alignItems: 'center' },

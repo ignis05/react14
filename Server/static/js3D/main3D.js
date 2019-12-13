@@ -62,9 +62,22 @@ $(document).ready(async function() {
 			obj = JSON.parse(e.data)
 		} catch {}
 		if (obj) {
-			player.model.setAnimation('run')
-
-			clickedVect = new THREE.Vector3(obj.x * 2, 0, obj.y * 2) // wektor określający PUNKT kliknięcia
+			console.log(obj)
+			if (Math.abs(obj.x) < 0.3 && Math.abs(obj.y) < 0.3) return
+			if (!isRunning) {
+				player.model.setAnimation('run')
+				isRunning = true
+			}
+			clickedVect = new THREE.Vector3(player.container.position.x - obj.x * 70, 0, player.container.position.z + obj.y * 70) // wektor określający PUNKT kliknięcia
+			directionVect = clickedVect
+				.clone()
+				.sub(player.container.position)
+				.normalize()
+			var angle = Math.atan2(player.container.position.clone().x - clickedVect.x, player.container.position.clone().z - clickedVect.z)
+			player.mesh.rotation.y = Math.PI * 1.5 + angle
+			player.lastdist = null
+			console.log(player.container.position)
+			console.log(clickedVect)
 		}
 	}
 
@@ -114,6 +127,7 @@ $(document).ready(async function() {
 			camera.lookAt(player.container.position)
 		} else {
 			//on arrive
+			isRunning = false
 			player.model.setAnimation('stand')
 		}
 	}
