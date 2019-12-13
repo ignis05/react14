@@ -1,7 +1,7 @@
 class Light {
     constructor() {
         var container = new THREE.Object3D();
-        this.light = new THREE.PointLight(0xffffff, 1, 1000);
+        this.light = new THREE.PointLight(0xffffff, 2, 1000);
         //light.castShadow = true
         container.add(this.light);
         var mesh = new THREE.Mesh(Settings.Icosahedron, Settings.yellowWireframeMaterial)
