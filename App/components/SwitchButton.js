@@ -16,7 +16,7 @@ class SwitchButton extends Component {
 		return (
 			<TouchableOpacity
 				onPress={this.pressHandler}
-				style={[{ width: 300, height: 300, borderRadius: 300, alignItems: 'center', justifyContent: 'center' }, { backgroundColor: this.props.enabled ? 'green' : 'red' }]}
+				style={[{ width: 200, height: 200, borderRadius: 200, alignItems: 'center', justifyContent: 'center' }, { backgroundColor: this.props.enabled ? 'green' : 'red' }]}
 			>
 				<Text style={{ fontSize: 32 , textAlign:'center'}}> {this.props.children} </Text>
 			</TouchableOpacity>

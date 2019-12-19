@@ -31,11 +31,10 @@ class MainScreen extends Component {
 			this.socket.close()
 			this.setState({ ws: false })
 		} else {
-			this.setState({ ws: true }, () => {
-				this.socket = new WebSocket(socketDest)
-				this.socket.onerror = e => console.log(e.message)
-				this.socket.onclose = e => console.log(e.code, e.reason)
-			})
+			this.socket = new WebSocket(socketDest)
+			this.socket.onerror = e => console.log(e.message)
+			this.socket.onclose = e => console.log(e.code, e.reason)
+			this.socket.onopen = e => this.setState({ ws: true })
 		}
 	}
 
