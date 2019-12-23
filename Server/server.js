@@ -34,71 +34,27 @@ sendToAllButMe = (data, ws) => {
 }
 
 var http = require('http')
-var fs = require('fs')
-var qs = require('querystring')
+const AutoRouting = require('./modules/AutoRouting')
+const router = new AutoRouting('./website/build/index.html', [], '<h1>Error 404 - file not found</h1>')
 
-var serverDB = {
-	map: {},
-}
+var os = require('os')
+var networkInterfaces = os.networkInterfaces()
+const IP = networkInterfaces.Ethernet.find(i => i.family == 'IPv4').address
 
-var server = http.createServer(function(req, res) {
+var server = http.createServer((req, res) => {
 	switch (req.method) {
 		case 'GET':
-			console.log(`requested adres: ${decodeURI(req.url)}`)
-			var fileEXTEN = req.url.split('.')[req.url.split('.').length - 1]
-			if (req.url == '/') {
-				fs.readFile(`./static/html/index.html`, function(error, data) {
-					if (error) {
-						res.writeHead(404, { 'Content-Type': 'text/html;charset=utf-8' })
-						res.write('<h1>błąd 404 - nie ma pliku!<h1>')
-						res.end()
-					} else {
-						res.writeHead(200, { 'Content-Type': 'text/html;;charset=utf-8' })
-						res.write(data)
-						res.end()
-						console.log('sent index')
-					}
-				})
-			} else {
-				fs.readFile(`.${decodeURI(req.url)}`, function(error, data) {
-					if (error) {
-						console.log(`cant find file ${decodeURI(req.url)}`)
-						res.writeHead(404, { 'Content-Type': 'text/html;charset=utf-8' })
-						res.write('<h1>Error 404 - file doesnt exist<h1>')
-						res.end()
-					} else {
-						switch (fileEXTEN) {
-							case 'css':
-								res.writeHead(200, { 'Content-Type': 'text/css;charset=utf-8' })
-								break
-							case 'html':
-								res.writeHead(200, { 'Content-Type': 'text/html;charset=utf-8' })
-								break
-							case 'js':
-								res.writeHead(200, { 'Content-Type': 'application/javascript;charset=utf-8' })
-								break
-							case 'png':
-								res.writeHead(200, { 'Content-Type': 'image/png' })
-								break
-							case 'jpg':
-								res.writeHead(200, { 'Content-Type': 'image/jpg' })
-								break
-							case 'mp3':
-								res.writeHead(200, { 'Content-type': 'audio/mpeg' })
-								break
-							default:
-								res.writeHead(200, { 'Content-Type': 'text/plain;charset=utf-8' })
-						}
-						res.write(data)
-						res.end()
-						console.log(`sent file: ${decodeURI(req.url)}`)
-					}
-				})
-			}
+			router.get(req, res)
 			break
+		case 'POST':
+			switch (req.url) {
+				case '/ip':
+					res.end(JSON.stringify({ ip: IP }))
+					break
+			}
 	}
 })
 
 server.listen(3000, () => {
-	console.log('serwer startuje na porcie 3000')
+	console.log('Server running on port 3000')
 })
